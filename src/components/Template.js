@@ -6,7 +6,8 @@ export default function Template({ children }) {
 }
 
 const Wrapper = styled.div`
-  padding: 16px;
+  box-sizing: border-box;
+  padding: 1rem;
   min-width: 320px;
   max-width: 425px;
   height: 100vh;
