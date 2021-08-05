@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { lighten } from "polished";
+import { darken } from "polished";
 
 export default function ButtonList() {
   return (
@@ -52,7 +52,7 @@ const Button = styled.button`
     ${({ theme }) => {
       const color = theme.pallete.navy;
       return css`
-        background-color: ${lighten(0.1, color)};
+        background-color: ${darken(0.1, color)};
       `;
     }}
   }

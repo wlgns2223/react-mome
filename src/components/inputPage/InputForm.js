@@ -1,5 +1,6 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { darken } from "polished";
 import { MdAddCircle } from "react-icons/md";
 
 export default function InputForm() {
@@ -31,6 +32,7 @@ const FormPositioner = styled.div`
   bottom: 2rem;
   margin: 0 1rem;
 `;
+
 const Form = styled.form`
   padding: 1rem 1.5rem;
   border-radius: 1rem;
@@ -38,7 +40,9 @@ const Form = styled.form`
   color: ${({ theme }) => theme.pallete.lightIvory};
   position: relative;
 `;
-const InputBlock = styled.div``;
+const InputBlock = styled.div`
+  padding-bottom: 3rem;
+`;
 const ItemBlock = styled.div`
   margin-bottom: 1rem;
   display: flex;
@@ -64,7 +68,7 @@ const Text = styled.span`
 const CircleButton = styled.button`
   color: ${({ theme }) => theme.pallete.lightIvory};
   background-color: ${({ theme }) => theme.pallete.lightPink};
-  width: 6rem;
+  width: 7rem;
   height: 2.5rem;
   border-radius: 0.5rem;
   font-size: 2rem;
@@ -75,4 +79,15 @@ const CircleButton = styled.button`
   align-items: center;
   position: absolute;
   left: 50%;
+  bottom: 1rem;
+  transform: translate(-50%, 0);
+
+  &:hover {
+    ${({ theme }) => {
+      const color = theme.pallete.lightPink;
+      return css`
+        background-color: ${darken(0.1, color)};
+      `;
+    }}
+  }
 `;
