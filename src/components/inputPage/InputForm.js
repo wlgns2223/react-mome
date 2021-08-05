@@ -54,7 +54,7 @@ const Input = styled.input`
   height: 2rem;
   font-size: 1.25rem;
   border-radius: 0.5rem;
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 1rem;
   outline: none;
   border: none;
 `;
@@ -66,8 +66,6 @@ const Text = styled.span`
   text-align: center;
 `;
 const CircleButton = styled.button`
-  color: ${({ theme }) => theme.pallete.lightIvory};
-  background-color: ${({ theme }) => theme.pallete.lightPink};
   width: 7rem;
   height: 2.5rem;
   border-radius: 0.5rem;
@@ -81,6 +79,10 @@ const CircleButton = styled.button`
   left: 50%;
   bottom: 1rem;
   transform: translate(-50%, 0);
+  cursor: pointer;
+
+  color: ${({ theme }) => theme.pallete.lightIvory};
+  background-color: ${({ theme }) => theme.pallete.lightPink};
 
   &:hover {
     ${({ theme }) => {

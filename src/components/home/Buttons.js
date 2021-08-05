@@ -1,13 +1,18 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { darken } from "polished";
+import { useHistory } from "react-router";
 
 export default function ButtonList() {
+  const history = useHistory();
+  const goHome = () => {
+    history.push("/input");
+  };
   return (
     <Section>
       <ItemList>
         <Item>
-          <Button>단어입력</Button>
+          <Button onClick={goHome}>단어입력</Button>
         </Item>
         <Item>
           <Button>단어관리</Button>

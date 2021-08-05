@@ -6,7 +6,7 @@ export default function InputPage() {
   return (
     <>
       <WordCardList />
-      <InputForm />;
+      <InputForm />
     </>
   );
 }
