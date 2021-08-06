@@ -1,0 +1,19 @@
+{
+    "word": [
+      {
+        "id": 1,
+        "name": "Korea",
+        "meaning": "Seoul"
+      },
+      {
+        "id": 2,
+        "name": "Japan",
+        "meaning": "Tokyo"
+      },
+      {
+        "id": 3,
+        "name": "China",
+        "meaning": "Beijing"
+      }
+    ]
+  }
