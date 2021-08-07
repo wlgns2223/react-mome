@@ -1,18 +1,24 @@
 // 여러개의 단어들에 대한 액션
+export const REQUEST = "REQUEST";
+export const ERROR = "ERROR";
 export const GET_WORDS = "GET_WORDS";
-export const GET_WORDS_SUCCESS = "GET_WORDS_SUCCESS";
-export const GET_WORDS_ERROR = "GET_WORDS_ERROR";
+export const DELETE_ONE_WORD = "DELETE_ONE_WORD";
 
-export const getWordsAction = () => ({
-  type: GET_WORDS,
+export const requestAction = () => ({
+  type: REQUEST,
+});
+
+export const errorAction = (error) => ({
+  type: ERROR,
+  error,
 });
 
 export const getWordsSuccessAction = (data) => ({
   type: GET_WORDS_SUCCESS,
-  data,
+  payload: data,
 });
 
-export const getWordsErrorAction = (error) => ({
-  type: GET_WORDS_ERROR,
-  error,
+export const deleteOneWordAction = (id) => ({
+  type: DELETE_ONE_WORD,
+  payload: id,
 });

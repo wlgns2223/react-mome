@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import { darken } from "polished";
 import { MdDelete } from "react-icons/md";
 
-export default function WordCard({ word }) {
+export default function WordCard({ word, onDelete }) {
   const [name, setName] = useState(word.name);
   const [meaning, setMeaning] = useState(word.meaning);
   const [active, setActive] = useState(false);
@@ -20,7 +20,7 @@ export default function WordCard({ word }) {
             setName(e.target.value);
           }}
         />
-        <Delete>
+        <Delete onClick={() => onDelete(word.id)}>
           <MdDelete />
         </Delete>
       </Block>
@@ -76,6 +76,7 @@ const Block = styled.div`
 
 const Text = styled.span`
   font-size: 1rem;
+  min-width: 2rem;
   line-height: 1.25rem;
   display: inline-block;
   width: 3rem;
@@ -92,7 +93,7 @@ const Input = styled.input`
 `;
 
 const Delete = styled.div`
-  width: 1.5rem;
+  width: 2rem;
   height: 1.5rem;
   display: flex;
   justify-content: center;

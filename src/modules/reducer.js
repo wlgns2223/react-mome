@@ -1,49 +1,37 @@
-import { GET_WORDS, GET_WORDS_ERROR, GET_WORDS_SUCCESS } from "./actions";
+import { REQUEST, ERROR, GET_WORDS, DELETE_ONE_WORD } from "./actions";
 
 const initialState = {
-  words: {
-    loading: false,
-    data: null,
-    error: null,
-  },
-  word: {
-    loading: false,
-    data: null,
-    error: null,
-  },
+  words: [],
+  word: null,
+  loading: null,
+  error: null,
 };
 
 let nextId = 4;
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+    case REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case ERROR:
+      return {
+        ...state,
+        error: action.payload,
+      };
     case GET_WORDS:
       return {
         ...state,
-        words: {
-          loading: true,
-          data: null,
-          error: null,
-        },
+        words: action.payload,
       };
-    case GET_WORDS_SUCCESS:
+    case DELETE_ONE_WORD:
       return {
         ...state,
-        words: {
-          loading: false,
-          data: action.data,
-          error: null,
-        },
+        words: state.words.filter((word) => word.id !== action.payload),
       };
-    case GET_WORDS_ERROR:
-      return {
-        ...state,
-        words: {
-          loading: false,
-          data: null,
-          error: action.error,
-        },
-      };
+
     default:
       return { ...state };
   }

@@ -57,12 +57,14 @@ const Input = styled.input`
   padding: 0.25rem 1rem;
   outline: none;
   border: none;
+  width: 100%;
 `;
 const Text = styled.span`
   font-size: 1.25rem;
   line-height: 1.5rem;
   display: inline-block;
   width: 3rem;
+  min-width: 3rem;
   text-align: center;
 `;
 const CircleButton = styled.button`
