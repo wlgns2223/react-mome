@@ -9,7 +9,6 @@ import { Provider } from "react-redux";
 import ReduxThunk from "redux-thunk";
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
-console.log(store.getState());
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

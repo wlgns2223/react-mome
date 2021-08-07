@@ -1,12 +1,11 @@
 import React from "react";
 import InputForm from "./InputForm";
-import WordCardList from "./WordCardList";
-import axios from "axios";
+import WordCardListContainer from "./WordCardListContainer";
 
 export default function InputPage() {
   return (
     <>
-      <WordCardList />
+      <WordCardListContainer />
       <InputForm />
     </>
   );

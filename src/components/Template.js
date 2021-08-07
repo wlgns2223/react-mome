@@ -10,8 +10,8 @@ const Wrapper = styled.div`
   padding: 1rem;
   min-width: 320px;
   max-width: 425px;
-  height: 100vh;
   max-height: 812px;
+  height: calc(100vh - 70px);
   position: relative;
   display: flex;
   flex-direction: column;

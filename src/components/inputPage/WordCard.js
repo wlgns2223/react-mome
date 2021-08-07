@@ -3,8 +3,9 @@ import styled, { css } from "styled-components";
 import { darken } from "polished";
 import { MdDelete } from "react-icons/md";
 
-export default function WordCard(props) {
-  const [text, setText] = useState(props.text);
+export default function WordCard({ word }) {
+  const [name, setName] = useState(word.name);
+  const [meaning, setMeaning] = useState(word.meaning);
   const [active, setActive] = useState(false);
   const onClick = () => {
     setActive(!active);
@@ -14,9 +15,9 @@ export default function WordCard(props) {
       <Block>
         <Text>단어</Text>
         <Input
-          value={text}
+          value={name}
           onChange={(e) => {
-            setText(e.target.value);
+            setName(e.target.value);
           }}
         />
         <Delete>
@@ -27,9 +28,9 @@ export default function WordCard(props) {
         <Block>
           <Text>뜻</Text>
           <Input
-            value={text}
+            value={meaning}
             onChange={(e) => {
-              setText(e.target.value);
+              setMeaning(e.target.value);
             }}
           />
         </Block>

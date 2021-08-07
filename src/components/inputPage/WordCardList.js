@@ -2,21 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import WordCard from "./WordCard";
 
-export default function WordCardList() {
+export default function WordCardList({ words }) {
   return (
     <>
       <List>
-        <li>
-          <WordCard text="hello" />
-        </li>
-        <li>
-          <WordCard text="bye" />
-        </li>
-        <li>
-          <WordCard text="wow" />
-        </li>
+        {words.map((word) => (
+          <li key={word.id}>
+            <WordCard word={word} />
+          </li>
+        ))}
       </List>
-      <NumberOfWords>총 3단어</NumberOfWords>
+      {/* <NumberOfWords>총 3단어</NumberOfWords> */}
     </>
   );
 }
