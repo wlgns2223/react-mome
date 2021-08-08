@@ -3,7 +3,7 @@ import * as actions from "./actions";
 const initialState = {
   words: [],
   word: null,
-  loading: null,
+  loading: false,
   error: null,
 };
 
@@ -19,25 +19,25 @@ export default function reducer(state = initialState, action) {
         ...state,
         error: action.payload,
       };
+    case actions.SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+      };
     case actions.GET_WORDS:
       return {
         ...state,
-        loading: null,
-        error: null,
         words: action.payload,
       };
     case actions.DELETE_ONE_WORD:
       return {
         ...state,
-        loading: null,
-        error: null,
         words: state.words.filter((word) => word.id !== action.payload),
       };
     case actions.ADD_ONE_WORD:
       return {
         ...state,
-        loading: null,
-        error: null,
         words: state.words.concat(action.payload),
       };
 

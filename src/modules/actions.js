@@ -1,6 +1,7 @@
 // 여러개의 단어들에 대한 액션
 export const REQUEST = "REQUEST";
 export const ERROR = "ERROR";
+export const SUCCESS = "SUCCESS";
 export const GET_WORDS = "GET_WORDS";
 export const DELETE_ONE_WORD = "DELETE_ONE_WORD";
 export const ADD_ONE_WORD = "ADD_ONE_WORD";
@@ -12,6 +13,10 @@ export const requestAction = () => ({
 export const errorAction = (error) => ({
   type: ERROR,
   error,
+});
+
+export const successAction = () => ({
+  type: SUCCESS,
 });
 
 export const getWordsSuccessAction = (data) => ({

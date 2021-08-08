@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { darken } from "polished";
 import { MdDelete } from "react-icons/md";
+import { useSelector } from "react-redux";
 
 export default function WordCard({ word, onDelete }) {
   const [name, setName] = useState(word.name);
@@ -10,7 +11,8 @@ export default function WordCard({ word, onDelete }) {
   const onClick = () => {
     setActive(!active);
   };
-
+  const state = useSelector((state) => state.reducer);
+  console.log(state);
   return (
     <Card onClick={onClick}>
       <Block>
