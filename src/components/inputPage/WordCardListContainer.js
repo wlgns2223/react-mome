@@ -8,7 +8,7 @@ export default function WordCardListContainer() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getWords());
-  }, []);
+  }, [dispatch]);
   const onDelete = (id) => {
     dispatch(deleteOneWord(id));
   };

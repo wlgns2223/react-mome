@@ -21,3 +21,13 @@ export const deleteOneWord = (id) => async (dispatch) => {
     dispatch(actions.errorAction(e));
   }
 };
+
+export const addOneWord = (word) => async (dispatch) => {
+  dispatch(actions.requestAction());
+  try {
+    const res = await axios.post(apiUrl, word);
+    dispatch(actions.addOneWordAction(res.data));
+  } catch (e) {
+    dispatch(actions.errorAction(e));
+  }
+};

@@ -2,7 +2,7 @@ import Template from "./components/Template";
 import { GlobalStyles } from "./styles/theme";
 import { ThemeProvider } from "styled-components";
 import theme from "./styles/theme";
-import { Route, Switch, useLocation } from "react-router-dom";
+import { Route, useLocation } from "react-router-dom";
 
 import Home from "./components/home";
 import InputPage from "./components/inputPage";

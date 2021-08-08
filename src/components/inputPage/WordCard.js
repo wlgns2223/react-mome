@@ -10,6 +10,7 @@ export default function WordCard({ word, onDelete }) {
   const onClick = () => {
     setActive(!active);
   };
+
   return (
     <Card onClick={onClick}>
       <Block>

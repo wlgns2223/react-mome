@@ -12,7 +12,7 @@ export default function WordCardList({ words, onDelete }) {
           </li>
         ))}
       </List>
-      <NumberOfWords>총 3단어</NumberOfWords>
+      {/* <NumberOfWords>총 3단어</NumberOfWords> */}
     </>
   );
 }
@@ -24,8 +24,9 @@ const NumberOfWords = styled.div`
 
 const List = styled.ul`
   width: 100%;
-  height: calc(100vh - 200px);
+  height: calc(100vh - 300px);
   max-height: 530px;
+  overflow-y: scroll;
 
   li + li {
     margin-top: 1rem;

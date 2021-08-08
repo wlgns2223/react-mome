@@ -1,7 +1,7 @@
 import { getWords } from "../../modules/thunks";
 import axios from "axios";
 import * as actions from "../../modules/actions";
-import { deleteOneWord } from "../../modules/thunks";
+import * as thunks from "../../modules/thunks";
 
 jest.mock("axios");
 describe("getWords thunk test", () => {
@@ -79,26 +79,70 @@ describe("Delete thunk", () => {
       type: actions.DELETE_ONE_WORD,
       payload: 1,
     };
-    expect(deleteOneWord(1)).toStrictEqual(expected);
+    expect(thunks.deleteOneWord(1)).toStrictEqual(expected);
   });
 
   it("deleteOne Thunk", () => {
-    deleteOneWord()(dispatch);
+    thunks.deleteOneWord()(dispatch);
     expect(dispatch).toHaveBeenCalledWith(actions.requestAction());
   });
 
   it("deleteOne Thunk axios delete success", async () => {
     axios.delete.mockResolvedValue(true);
     const id = 1;
-    await deleteOneWord(id)(dispatch);
-    expect(dispatch).toHaveBeenLastCalledWith(actions.deleteOneWordAction(id));
+    await thunks.deleteOneWord(id)(dispatch);
+    expect(dispatch).toHaveBeenLastCalledWith(
+      actions.thunks.deleteOneWordAction(id)
+    );
   });
 
-  it("deleteOneWord thunk failure", async () => {
+  it("thunks.deleteOneWord thunk failure", async () => {
     const error = new Error("Error");
     axios.delete.mockRejectedValue(error);
     const id = 1;
-    await deleteOneWord(id)(dispatch);
+    await thunks.deleteOneWord(id)(dispatch);
     expect(dispatch).toHaveBeenCalledWith(actions.errorAction(error));
+  });
+});
+
+describe("addOneWord thunk test", () => {
+  const dispatch = jest.fn();
+  const res = {
+    data: {
+      name: "Hungary",
+      meaning: "Budapest",
+    },
+  };
+  const word = {
+    name: "Hungary",
+    meaning: "Budapest",
+  };
+  it("addOneWord action함수는 정확한 액션을 반환한다.", () => {
+    const expected = {
+      type: actions.ADD_ONE_WORD,
+      payload: word,
+    };
+
+    expect(actions.addOneWordAction(word)).toStrictEqual(expected);
+  });
+
+  it("thunk request", async () => {
+    await thunks.addOneWord()(dispatch);
+    expect(dispatch).toHaveBeenCalledWith(actions.requestAction());
+  });
+
+  it("addOneWord post success", async () => {
+    axios.post.mockResolvedValue(res);
+    await thunks.addOneWord(word)(dispatch);
+    expect(dispatch).toHaveBeenLastCalledWith(
+      actions.addOneWordAction(res.data)
+    );
+  });
+
+  it("addOneWord post failure", async () => {
+    const error = new Error("my Error");
+    axios.post.mockRejectedValue(error);
+    await thunks.addOneWord(word)(dispatch);
+    expect(dispatch).toHaveBeenLastCalledWith(actions.errorAction(error));
   });
 });

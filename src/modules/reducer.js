@@ -1,4 +1,4 @@
-import { REQUEST, ERROR, GET_WORDS, DELETE_ONE_WORD } from "./actions";
+import * as actions from "./actions";
 
 const initialState = {
   words: [],
@@ -7,29 +7,38 @@ const initialState = {
   error: null,
 };
 
-let nextId = 4;
-
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case REQUEST:
+    case actions.REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case ERROR:
+    case actions.ERROR:
       return {
         ...state,
         error: action.payload,
       };
-    case GET_WORDS:
+    case actions.GET_WORDS:
       return {
         ...state,
+        loading: null,
+        error: null,
         words: action.payload,
       };
-    case DELETE_ONE_WORD:
+    case actions.DELETE_ONE_WORD:
       return {
         ...state,
+        loading: null,
+        error: null,
         words: state.words.filter((word) => word.id !== action.payload),
+      };
+    case actions.ADD_ONE_WORD:
+      return {
+        ...state,
+        loading: null,
+        error: null,
+        words: state.words.concat(action.payload),
       };
 
     default:

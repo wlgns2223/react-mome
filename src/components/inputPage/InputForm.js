@@ -1,23 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { darken } from "polished";
 import { MdAddCircle } from "react-icons/md";
 
-export default function InputForm() {
+export default function InputForm({ onCreate }) {
+  const [name, setName] = useState("");
+  const [meaning, setMeaning] = useState("");
+
+  const onChange = (event, callback) => {
+    callback(event.target.value);
+  };
+  const onSubmit = (e) => {
+    e.preventDefault();
+    onCreate({ name, meaning });
+    setName("");
+    setMeaning("");
+  };
+
   return (
     <FormPositioner>
-      <Form>
+      <Form onSubmit={onSubmit}>
         <InputBlock>
           <ItemBlock>
             <Text>단어</Text>
-            <Input />
+            <Input
+              type="text"
+              placeholder="단어를 입력하세요"
+              value={name}
+              onChange={(e) => onChange(e, setName)}
+            />
           </ItemBlock>
           <ItemBlock>
             <Text>뜻</Text>
-            <Input />
+            <Input
+              type="text"
+              placeholder="뜻을 입력하세요"
+              value={meaning}
+              onChange={(e) => onChange(e, setMeaning)}
+            />
           </ItemBlock>
         </InputBlock>
-        <CircleButton>
+        <CircleButton type="submit">
           <MdAddCircle />
         </CircleButton>
       </Form>
