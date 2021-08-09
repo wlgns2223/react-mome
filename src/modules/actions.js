@@ -5,6 +5,7 @@ export const SUCCESS = "SUCCESS";
 export const GET_WORDS = "GET_WORDS";
 export const DELETE_ONE_WORD = "DELETE_ONE_WORD";
 export const ADD_ONE_WORD = "ADD_ONE_WORD";
+export const UPDATE_ONE_WORD = "UPDATE_ONE_WORD";
 
 export const requestAction = () => ({
   type: REQUEST,
@@ -31,5 +32,10 @@ export const deleteOneWordAction = (id) => ({
 
 export const addOneWordAction = (word) => ({
   type: ADD_ONE_WORD,
+  payload: word,
+});
+
+export const updateOneWordAction = (word) => ({
+  type: UPDATE_ONE_WORD,
   payload: word,
 });

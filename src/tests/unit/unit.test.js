@@ -146,3 +146,40 @@ describe("addOneWord thunk test", () => {
     expect(dispatch).toHaveBeenLastCalledWith(actions.errorAction(error));
   });
 });
+
+describe("update thunk", () => {
+  const word = {
+    name: "newName",
+    meaning: "newMeaning",
+  };
+  const id = 1;
+  const dispatch = jest.fn();
+  it("update action", () => {
+    const expected = {
+      type: actions.UPDATE_ONE_WORD,
+      payload: word,
+    };
+    expect(actions.updateOneWordAction(word)).toStrictEqual(expected);
+  });
+
+  it("updateOneWord thunk success", async () => {
+    const res = {
+      data: word,
+    };
+
+    axios.put.mockResolvedValue(res);
+    await thunks.updateOneWord(id, word)(dispatch);
+    expect(dispatch).toHaveBeenCalledWith(actions.requestAction());
+    expect(dispatch).toHaveBeenCalledWith(actions.successAction());
+    expect(dispatch).toHaveBeenLastCalledWith(
+      actions.updateOneWordAction(res.data)
+    );
+  });
+
+  it("updateOneWord thunk fail", async () => {
+    const error = new Error("My Error");
+    axios.put.mockRejectedValue(error);
+    await thunks.updateOneWord(id, word)(dispatch);
+    expect(dispatch).toHaveBeenLastCalledWith(actions.errorAction(error));
+  });
+});

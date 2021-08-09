@@ -10,6 +10,7 @@ export default function InputForm({ onCreate }) {
   const onChange = (event, callback) => {
     callback(event.target.value);
   };
+
   const onSubmit = (e) => {
     e.preventDefault();
     onCreate({ name, meaning });

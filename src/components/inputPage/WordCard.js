@@ -1,18 +1,16 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import styled, { css } from "styled-components";
 import { darken } from "polished";
-import { MdDelete } from "react-icons/md";
-import { useSelector } from "react-redux";
+import { MdDelete, MdSave } from "react-icons/md";
 
-export default function WordCard({ word, onDelete }) {
+export default function WordCard({ word, onDelete, onUpdate }) {
   const [name, setName] = useState(word.name);
   const [meaning, setMeaning] = useState(word.meaning);
-  const [active, setActive] = useState(false);
-  const onClick = () => {
-    setActive(!active);
-  };
-  const state = useSelector((state) => state.reducer);
-  console.log(state);
+  const [open, setopen] = useState(false);
+  const onClick = useCallback(() => {
+    setopen(!open);
+  }, [open]);
+
   return (
     <Card onClick={onClick}>
       <Block>
@@ -23,11 +21,17 @@ export default function WordCard({ word, onDelete }) {
             setName(e.target.value);
           }}
         />
-        <Delete onClick={() => onDelete(word.id)}>
-          <MdDelete />
-        </Delete>
+        {open ? (
+          <Save onClick={() => onUpdate(word.id, { name, meaning })}>
+            <MdSave />
+          </Save>
+        ) : (
+          <Delete onClick={() => onDelete(word.id)}>
+            <MdDelete />
+          </Delete>
+        )}
       </Block>
-      {active && (
+      {open && (
         <Block>
           <Text>뜻</Text>
           <Input
@@ -107,4 +111,15 @@ const Delete = styled.div`
   &:hover {
     color: ${({ theme }) => theme.pallete.lightPink};
   }
+`;
+
+const Save = styled.div`
+  width: 2rem;
+  height: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1rem;
+  font-size: 2rem;
+  color: ${({ theme }) => theme.pallete.mint};
 `;

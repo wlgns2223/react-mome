@@ -34,3 +34,14 @@ export const addOneWord = (word) => async (dispatch) => {
     dispatch(actions.errorAction(e));
   }
 };
+
+export const updateOneWord = (id, word) => async (dispatch) => {
+  dispatch(actions.requestAction());
+  try {
+    const res = await axios.put(apiUrl + id, word);
+    dispatch(actions.successAction());
+    dispatch(actions.updateOneWordAction(res.data));
+  } catch (e) {
+    dispatch(actions.errorAction(e));
+  }
+};

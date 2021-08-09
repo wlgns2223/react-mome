@@ -1,17 +1,31 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import WordCardList from "./WordCardList";
-import { getWords, deleteOneWord } from "../../modules/thunks";
+import * as thunks from "../../modules/thunks";
 
 export default function WordCardListContainer() {
   const { loading, words, error } = useSelector((state) => state.reducer);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getWords());
-  }, [dispatch]);
-  const onDelete = (id) => {
-    dispatch(deleteOneWord(id));
-  };
 
-  return words ? <WordCardList words={words} onDelete={onDelete} /> : null;
+  useEffect(() => {
+    dispatch(thunks.getWords());
+  }, [dispatch]);
+
+  const onDelete = useCallback(
+    (id) => {
+      dispatch(thunks.deleteOneWord(id));
+    },
+    [dispatch]
+  );
+
+  const onUpdate = useCallback(
+    (id, word) => {
+      dispatch(thunks.updateOneWord(id, word));
+    },
+    [dispatch]
+  );
+
+  return words ? (
+    <WordCardList words={words} onDelete={onDelete} onUpdate={onUpdate} />
+  ) : null;
 }

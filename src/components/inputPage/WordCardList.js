@@ -1,14 +1,30 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import WordCard from "./WordCard";
 
-export default function WordCardList({ words, onDelete }) {
+export default function WordCardList({ words, onDelete, onUpdate }) {
+  const listRef = useRef();
+
+  useEffect(() => {
+    const scrollDown = () => {
+      if (listRef.current.lastChild) {
+        listRef.current.lastChild.scrollIntoView({
+          behavior: "smooth",
+          block: "end",
+          inline: "nearest",
+        });
+      }
+    };
+
+    scrollDown();
+  }, [words]);
+
   return (
     <>
-      <List>
-        {words.map((word, index) => (
-          <li key={index}>
-            <WordCard word={word} onDelete={onDelete} />
+      <List ref={listRef}>
+        {words.map((word) => (
+          <li key={word.id}>
+            <WordCard word={word} onDelete={onDelete} onUpdate={onUpdate} />
           </li>
         ))}
       </List>
@@ -24,7 +40,7 @@ const NumberOfWords = styled.div`
 
 const List = styled.ul`
   width: 100%;
-  height: calc(100vh - 300px);
+  height: calc(100vh - 350px);
   max-height: 530px;
   overflow-y: scroll;
 
