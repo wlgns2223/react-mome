@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
-export const pallete = {
+const pallete = {
   navy: "#364F6B",
   mint: "#3FC1C9",
   lightIvory: "#F5F5F5",
@@ -9,7 +9,7 @@ export const pallete = {
   white: "#FFFFFF",
 };
 
-export const font = {
+const font = {
   letterSpace: "0.5rem",
 };
 

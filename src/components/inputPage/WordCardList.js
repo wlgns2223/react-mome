@@ -20,29 +20,27 @@ export default function WordCardList({ words, onDelete, onUpdate }) {
   }, [words]);
 
   return (
-    <>
-      <List ref={listRef}>
-        {words.map((word) => (
-          <li key={word.id}>
-            <WordCard word={word} onDelete={onDelete} onUpdate={onUpdate} />
-          </li>
-        ))}
-      </List>
-      {/* <NumberOfWords>총 3단어</NumberOfWords> */}
-    </>
+    <List ref={listRef}>
+      {words.map((word) => (
+        <li key={word.id}>
+          <WordCard word={word} onDelete={onDelete} onUpdate={onUpdate} />
+        </li>
+      ))}
+    </List>
   );
 }
-const NumberOfWords = styled.div`
-  text-align: center;
-  padding-top: 0.85rem;
-  font-size: 1.25rem;
-`;
 
 const List = styled.ul`
   width: 100%;
-  height: calc(100vh - 350px);
-  max-height: 530px;
   overflow-y: scroll;
+  flex: 1;
+  margin-bottom: 2rem;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   li + li {
     margin-top: 1rem;

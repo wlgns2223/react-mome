@@ -1,24 +1,34 @@
 import React from "react";
-import styled, { css } from "styled-components";
-import { darken } from "polished";
+import styled, { ThemeContext } from "styled-components";
 import { useHistory } from "react-router";
+import { Button } from "../common/CommonComponents";
 
 export default function ButtonList() {
   const history = useHistory();
-  const goHome = () => {
+  const goInput = () => {
     history.push("/input");
   };
+  const goManage = () => {
+    history.push("/manage");
+  };
+
   return (
     <Section>
       <ItemList>
         <Item>
-          <Button onClick={goHome}>단어입력</Button>
+          <Button onClick={goInput} width="220px" height="70px" color="navy">
+            단어입력
+          </Button>
         </Item>
         <Item>
-          <Button>단어관리</Button>
+          <Button onClick={goManage} width="220px" height="70px" color="navy">
+            단어관리
+          </Button>
         </Item>
         <Item>
-          <Button>시작</Button>
+          <Button width="220px" height="70px" color="navy">
+            시작
+          </Button>
         </Item>
       </ItemList>
     </Section>
@@ -37,28 +47,5 @@ const ItemList = styled.ul`
 const Item = styled.li`
   & + & {
     margin-top: 40px;
-  }
-`;
-
-const Button = styled.button`
-  width: 220px;
-  height: 70px;
-  color: ${({ theme }) => theme.pallete.lightIvory};
-  background-color: ${({ theme }) => theme.pallete.navy};
-  outline: none;
-  border: none;
-  border-radius: 1rem;
-  font-size: 2rem;
-  letter-spacing: ${({ theme }) => theme.font.letterSpace};
-  cursor: pointer;
-  padding: 0 1rem;
-
-  &:hover {
-    ${({ theme }) => {
-      const color = theme.pallete.navy;
-      return css`
-        background-color: ${darken(0.1, color)};
-      `;
-    }}
   }
 `;

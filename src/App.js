@@ -7,19 +7,25 @@ import { Route, useLocation } from "react-router-dom";
 import Home from "./components/home";
 import InputPage from "./components/inputPage";
 import NavBar from "./components/nav/NavBar";
+import EmptyNavBar from "./components/nav/EmptyNavBar";
+import Manage from "./components/manage";
+import { AppWrapper } from "./components/common/CommonComponents";
 
 function App() {
   const url = useLocation();
   const homePath = "/";
   return (
-    <ThemeProvider theme={theme}>
-      {url.pathname === homePath ? null : <NavBar />}
-      <Template>
-        <Route path="/" exact component={Home} />
-        <Route path="/input" component={InputPage} />
-      </Template>
-      <GlobalStyles />
-    </ThemeProvider>
+    <AppWrapper>
+      <ThemeProvider theme={theme}>
+        {url.pathname === homePath ? <EmptyNavBar /> : <NavBar />}
+        <Template>
+          <Route path="/" exact component={Home} />
+          <Route path="/input" component={InputPage} />
+          <Route path="/manage" component={Manage} />
+        </Template>
+        <GlobalStyles />
+      </ThemeProvider>
+    </AppWrapper>
   );
 }
 

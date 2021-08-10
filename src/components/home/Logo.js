@@ -22,7 +22,7 @@ const Sqaure = styled.div`
   background-color: ${(props) => props.color};
   width: 100%;
   height: 150px;
-  border-radius: 16px;
+  border-radius: 0.5rem;
   z-index: ${(props) => props.zIndex};
 
   display: flex;
