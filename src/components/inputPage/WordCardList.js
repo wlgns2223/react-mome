@@ -1,13 +1,14 @@
 import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import WordCard from "./WordCard";
+import EmptyWordsMessage from "./EmptyWordsMessage";
 
 export default function WordCardList({ words, onDelete, onUpdate }) {
   const listRef = useRef();
-
+  const isEmptyWords = Array.isArray(words) && words.length === 0;
   useEffect(() => {
     const scrollDown = () => {
-      if (listRef.current.lastChild) {
+      if (!isEmptyWords) {
         listRef.current.lastChild.scrollIntoView({
           behavior: "smooth",
           block: "end",
@@ -17,9 +18,11 @@ export default function WordCardList({ words, onDelete, onUpdate }) {
     };
 
     scrollDown();
-  }, [words]);
+  }, [words, isEmptyWords]);
 
-  return (
+  return isEmptyWords ? (
+    <EmptyWordsMessage />
+  ) : (
     <List ref={listRef}>
       {words.map((word) => (
         <li key={word.id}>
