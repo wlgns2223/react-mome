@@ -39,5 +39,6 @@ export const AppWrapper = styled.div`
   margin: 0 auto;
   min-width: 320px;
   max-width: 425px;
+  height: 100vh;
   max-height: 812px;
 `;

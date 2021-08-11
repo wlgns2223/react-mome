@@ -34,11 +34,12 @@ export default function ButtonList() {
     </Section>
   );
 }
-const Section = styled.section`
+const Section = styled.article`
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex: 1;
 `;
 const ItemList = styled.ul`
   margin: 60px auto;

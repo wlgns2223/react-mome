@@ -12,10 +12,9 @@ export default function Logo() {
   );
 }
 
-const LogoWrapper = styled.header`
+const LogoWrapper = styled.div`
   position: relative;
   margin-top: 3rem;
-  height: 305px;
 `;
 
 const Sqaure = styled.div`

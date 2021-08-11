@@ -5,7 +5,7 @@ export default function EmptyNavBar() {
   return <Header />;
 }
 
-const Header = styled.div`
+const Header = styled.header`
   height: 70px;
   background-color: ${({ theme }) => theme.pallete.lightIvory};
   min-width: 320px;
