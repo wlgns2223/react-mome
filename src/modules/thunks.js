@@ -5,20 +5,20 @@ const apiUrl = "http://localhost:3001/words/";
 export const getWords = () => async (dispatch) => {
   dispatch(actions.requestAction());
   try {
-    const res = await axios.get(apiUrl);
+    const payload = await axios.get(apiUrl);
     dispatch(actions.successAction());
-    dispatch(actions.getWordsSuccessAction(res.data));
-  } catch (error) {
-    dispatch(actions.errorAction(error));
+    dispatch(actions.getWordsSuccessAction(payload));
+  } catch (e) {
+    dispatch(actions.errorAction(e));
   }
 };
 
 export const deleteOneWord = (id) => async (dispatch) => {
   dispatch(actions.requestAction());
   try {
-    await axios.delete(apiUrl + id);
+    const payload = await axios.delete(apiUrl + id, { id });
     dispatch(actions.successAction());
-    dispatch(actions.deleteOneWordAction(id));
+    dispatch(actions.deleteOneWordAction(payload));
   } catch (e) {
     dispatch(actions.errorAction(e));
   }
@@ -27,9 +27,9 @@ export const deleteOneWord = (id) => async (dispatch) => {
 export const addOneWord = (word) => async (dispatch) => {
   dispatch(actions.requestAction());
   try {
-    const res = await axios.post(apiUrl, word);
+    const payload = await axios.post(apiUrl, word);
     dispatch(actions.successAction());
-    dispatch(actions.addOneWordAction(res.data));
+    dispatch(actions.addOneWordAction(payload));
   } catch (e) {
     dispatch(actions.errorAction(e));
   }
@@ -38,9 +38,9 @@ export const addOneWord = (word) => async (dispatch) => {
 export const updateOneWord = (id, word) => async (dispatch) => {
   dispatch(actions.requestAction());
   try {
-    const res = await axios.put(apiUrl + id, word);
+    const payload = await axios.put(apiUrl + id, word);
     dispatch(actions.successAction());
-    dispatch(actions.updateOneWordAction(res.data));
+    dispatch(actions.updateOneWordAction(payload));
   } catch (e) {
     dispatch(actions.errorAction(e));
   }

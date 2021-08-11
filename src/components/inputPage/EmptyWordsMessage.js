@@ -16,7 +16,8 @@ export default function EmptyWordsMessage() {
     return location.pathname === manageUrl;
   };
 
-  const onClick = () => {
+  const onClick = (e) => {
+    e.preventDefault();
     history.push("/input");
   };
 
@@ -41,7 +42,15 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const GoToInput = styled(Button)`
+const GoToInput = styled.a`
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+  text-align: center;
+  height: 2rem;
+  line-height: 2rem;
+  color: white;
+  background-color: ${({ theme }) => theme.pallete.navy};
   font-size: 1.125rem;
   letter-spacing: 0.2rem;
 `;

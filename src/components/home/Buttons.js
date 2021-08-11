@@ -17,17 +17,17 @@ export default function ButtonList() {
       <ItemList>
         <Item>
           <Button onClick={goInput} width="220px" height="70px" color="navy">
-            단어입력
+            <h2>단어입력</h2>
           </Button>
         </Item>
         <Item>
           <Button onClick={goManage} width="220px" height="70px" color="navy">
-            단어관리
+            <h2>단어관리</h2>
           </Button>
         </Item>
         <Item>
           <Button width="220px" height="70px" color="navy">
-            시작
+            <h2>시작</h2>
           </Button>
         </Item>
       </ItemList>

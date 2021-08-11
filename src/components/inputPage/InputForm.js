@@ -55,7 +55,7 @@ const FormPositioner = styled.div`
 
 const Form = styled.form`
   padding: 1rem 1.5rem;
-  border-radius: 1rem;
+  border-radius: 0.25rem;
   background-color: ${({ theme }) => theme.pallete.navy};
   color: ${({ theme }) => theme.pallete.lightIvory};
   position: relative;
@@ -90,7 +90,7 @@ const Text = styled.span`
 const CircleButton = styled.button`
   width: 7rem;
   height: 2.5rem;
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   font-size: 2rem;
   outline: none;
   border: none;

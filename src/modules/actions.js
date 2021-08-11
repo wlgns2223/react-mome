@@ -20,22 +20,22 @@ export const successAction = () => ({
   type: SUCCESS,
 });
 
-export const getWordsSuccessAction = (data) => ({
+export const getWordsSuccessAction = (payload) => ({
   type: GET_WORDS,
-  payload: data,
+  payload,
 });
 
-export const deleteOneWordAction = (id) => ({
+export const deleteOneWordAction = (payload) => ({
   type: DELETE_ONE_WORD,
-  payload: id,
+  payload,
 });
 
-export const addOneWordAction = (word) => ({
+export const addOneWordAction = (payload) => ({
   type: ADD_ONE_WORD,
-  payload: word,
+  payload,
 });
 
-export const updateOneWordAction = (word) => ({
+export const updateOneWordAction = (payload) => ({
   type: UPDATE_ONE_WORD,
-  payload: word,
+  payload,
 });

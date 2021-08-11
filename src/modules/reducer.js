@@ -28,17 +28,19 @@ export default function reducer(state = initialState, action) {
     case actions.GET_WORDS:
       return {
         ...state,
-        words: action.payload,
+        words: action.payload.data,
       };
     case actions.DELETE_ONE_WORD:
       return {
         ...state,
-        words: state.words.filter((word) => word.id !== action.payload),
+        words: state.words.filter(
+          (word) => word.id !== action.payload.config.id
+        ),
       };
     case actions.ADD_ONE_WORD:
       return {
         ...state,
-        words: state.words.concat(action.payload),
+        words: state.words.concat(action.payload.data),
       };
     case actions.UPDATE_ONE_WORD:
       const id = action.payload.id;
@@ -47,7 +49,7 @@ export default function reducer(state = initialState, action) {
         words: state.words.map((word) =>
           word.id === id
             ? {
-                ...action.payload,
+                ...action.payload.data,
               }
             : word
         ),

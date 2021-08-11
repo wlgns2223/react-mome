@@ -21,7 +21,7 @@ const Sqaure = styled.div`
   background-color: ${(props) => props.color};
   width: 100%;
   height: 150px;
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   z-index: ${(props) => props.zIndex};
 
   display: flex;
@@ -29,7 +29,7 @@ const Sqaure = styled.div`
   align-items: center;
 `;
 
-const Title = styled.span`
+const Title = styled.h1`
   color: ${({ theme }) => theme.pallete.lightIvory};
   font-size: 64px;
   letter-spacing: ${({ theme }) => theme.font.letterSpace};

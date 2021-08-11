@@ -10,7 +10,7 @@ export const Button = styled.button`
   color: ${({ theme }) => theme.pallete.lightIvory};
   outline: none;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   font-size: 2rem;
   letter-spacing: ${({ theme }) => theme.font.letterSpace};
   cursor: pointer;

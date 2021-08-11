@@ -2,6 +2,7 @@ import { getWords } from "../../modules/thunks";
 import axios from "axios";
 import * as actions from "../../modules/actions";
 import * as thunks from "../../modules/thunks";
+import thunk from "redux-thunk";
 
 jest.mock("axios");
 describe("getWords thunk test", () => {
@@ -181,5 +182,65 @@ describe("update thunk", () => {
     axios.put.mockRejectedValue(error);
     await thunks.updateOneWord(id, word)(dispatch);
     expect(dispatch).toHaveBeenLastCalledWith(actions.errorAction(error));
+  });
+});
+
+describe("thunk test", () => {
+  const payload = {
+    data: {
+      words: [
+        {
+          id: 1,
+          name: "test",
+          meaning: "test",
+        },
+      ],
+    },
+  };
+
+  const dispatch = jest.fn();
+
+  it("getWordsSuccessAction", () => {
+    const expected = {
+      type: actions.GET_WORDS,
+      payload,
+    };
+    expect(actions.getWordsSuccessAction(payload)).toStrictEqual(expected);
+  });
+
+  it("getWords thunk dispatch test", async () => {
+    axios.get.mockResolvedValue(payload);
+    await thunks.getWords()(dispatch);
+    expect(dispatch).toHaveBeenLastCalledWith(
+      actions.getWordsSuccessAction(payload)
+    );
+  });
+
+  it("deleteOneWord thunk dispatch test", async () => {
+    const payload = {
+      data: {},
+    };
+    const id = 1;
+    axios.delete.mockResolvedValue(payload);
+    await thunks.deleteOneWord(id)(dispatch);
+    expect(dispatch).toHaveBeenLastCalledWith(
+      actions.deleteOneWordAction(payload)
+    );
+  });
+
+  it("addOneWord test", async () => {
+    axios.post.mockResolvedValue(payload);
+    await thunks.addOneWord()(dispatch);
+    expect(dispatch).toHaveBeenLastCalledWith(
+      actions.addOneWordAction(payload)
+    );
+  });
+
+  it("updateOneWord test", async () => {
+    axios.put.mockResolvedValue(payload);
+    await thunks.updateOneWord()(dispatch);
+    expect(dispatch).toHaveBeenLastCalledWith(
+      actions.updateOneWordAction(payload)
+    );
   });
 });
