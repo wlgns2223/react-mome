@@ -1,11 +1,10 @@
-import axios from "axios";
 import * as actions from "./actions";
+import axiosInstance from "../utils/asyncUtils";
 
-const apiUrl = "http://localhost:3001/words/";
 export const getWords = () => async (dispatch) => {
   dispatch(actions.requestAction());
   try {
-    const payload = await axios.get(apiUrl);
+    const payload = await axiosInstance.get();
     dispatch(actions.successAction());
     dispatch(actions.getWordsSuccessAction(payload));
   } catch (e) {
@@ -16,10 +15,11 @@ export const getWords = () => async (dispatch) => {
 export const deleteOneWord = (id) => async (dispatch) => {
   dispatch(actions.requestAction());
   try {
-    const payload = await axios.delete(apiUrl + id, { id });
+    const payload = await axiosInstance.delete(`/${id}`, { id });
     dispatch(actions.successAction());
     dispatch(actions.deleteOneWordAction(payload));
   } catch (e) {
+    console.log(e);
     dispatch(actions.errorAction(e));
   }
 };
@@ -27,7 +27,7 @@ export const deleteOneWord = (id) => async (dispatch) => {
 export const addOneWord = (word) => async (dispatch) => {
   dispatch(actions.requestAction());
   try {
-    const payload = await axios.post(apiUrl, word);
+    const payload = await axiosInstance.post("/", word);
     dispatch(actions.successAction());
     dispatch(actions.addOneWordAction(payload));
   } catch (e) {
@@ -38,7 +38,7 @@ export const addOneWord = (word) => async (dispatch) => {
 export const updateOneWord = (id, word) => async (dispatch) => {
   dispatch(actions.requestAction());
   try {
-    const payload = await axios.put(apiUrl + id, word);
+    const payload = await axiosInstance.patch(`/${id}`, word);
     dispatch(actions.successAction());
     dispatch(actions.updateOneWordAction(payload));
   } catch (e) {

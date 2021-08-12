@@ -2,9 +2,10 @@ import { getWords } from "../../modules/thunks";
 import axios from "axios";
 import * as actions from "../../modules/actions";
 import * as thunks from "../../modules/thunks";
-import thunk from "redux-thunk";
+import axiosInstance from "../../utils/asyncUtils";
+import { createThunkFunction } from "../../utils/thunkUtils";
 
-jest.mock("axios");
+// jest.mock("axios");
 describe("getWords thunk test", () => {
   describe("dispatch getWords", () => {
     beforeEach(() => {
@@ -242,5 +243,158 @@ describe("thunk test", () => {
     expect(dispatch).toHaveBeenLastCalledWith(
       actions.updateOneWordAction(payload)
     );
+  });
+});
+
+describe("thunk creator test", () => {
+  const payload = {
+    data: {
+      word: [{ name: "hello", meaning: "world" }],
+    },
+  };
+  const error = new Error("My Error");
+  const axiosInstance = jest.fn();
+  const dispatch = jest.fn();
+
+  describe("getWords thunk", () => {
+    axiosInstance.get = jest.fn();
+    const thunk = createThunkFunction(
+      actions.getWordsSuccessAction,
+      axiosInstance.get
+    );
+    it("request action test", async () => {
+      await thunk()(dispatch);
+      expect(dispatch).toHaveBeenCalledWith(actions.requestAction());
+    });
+
+    it("success action test", async () => {
+      await thunk()(dispatch);
+      expect(dispatch).toHaveBeenCalledWith(actions.successAction());
+    });
+
+    it("action function test", async () => {
+      axiosInstance.get.mockResolvedValue(payload);
+      await thunk()(dispatch);
+      expect(dispatch).toHaveBeenLastCalledWith(
+        actions.getWordsSuccessAction(payload)
+      );
+    });
+    it("action function error", async () => {
+      axiosInstance.get.mockRejectedValue(error);
+      await thunk()(dispatch);
+      expect(dispatch).toHaveBeenLastCalledWith(actions.errorAction(error));
+    });
+  });
+
+  describe("deleteOneWord", () => {
+    axiosInstance.delete = jest.fn();
+    const deleteOneWord = createThunkFunction(
+      actions.deleteOneWordAction,
+      axiosInstance.delete
+    );
+    const id = 1;
+
+    it("request", async () => {
+      await deleteOneWord(id)(dispatch);
+      expect(dispatch).toHaveBeenCalledWith(actions.requestAction());
+    });
+
+    it("success", async () => {
+      axiosInstance.delete.mockResolvedValue(payload);
+      await deleteOneWord(id, { id })(dispatch);
+      expect(dispatch).toHaveBeenCalledWith(actions.successAction());
+    });
+
+    it("asyncCallback parameter", async () => {
+      axiosInstance.delete.mockResolvedValue(payload);
+      await deleteOneWord(id, { id })(dispatch);
+      expect(axiosInstance.delete).toHaveBeenCalledWith(id, { id });
+    });
+
+    it("deleteOneWordAction", async () => {
+      axiosInstance.delete.mockResolvedValue(payload);
+      await deleteOneWord(id, { id })(dispatch);
+      expect(dispatch).toHaveBeenCalledWith(
+        actions.deleteOneWordAction(payload)
+      );
+    });
+
+    it("delete error", async () => {
+      axiosInstance.delete.mockRejectedValue(error);
+      await deleteOneWord(id, { id })(dispatch);
+      expect(dispatch).toHaveBeenCalledWith(actions.errorAction(error));
+    });
+  });
+
+  describe("addOneWord", () => {
+    axiosInstance.post = jest.fn();
+    const addOneWord = createThunkFunction(
+      actions.addOneWordAction,
+      axiosInstance.post
+    );
+    const word = { name: "hello", meaning: "world" };
+
+    it("request", async () => {
+      await addOneWord("/", word)(dispatch);
+      expect(dispatch).toHaveBeenCalledWith(actions.requestAction());
+    });
+
+    it("axiosInstance parameter test", async () => {
+      axiosInstance.post.mockResolvedValue(word);
+      await addOneWord(word)(dispatch);
+      expect(axiosInstance.post).toHaveBeenCalledWith(word);
+    });
+
+    it("success", async () => {
+      axiosInstance.post.mockResolvedValue(word);
+      await addOneWord("/", word)(dispatch);
+      expect(dispatch).toHaveBeenCalledWith(actions.successAction());
+    });
+
+    it("addOneWordAction", async () => {
+      axiosInstance.post.mockResolvedValue(payload);
+      await addOneWord("/", word)(dispatch);
+      expect(dispatch).toHaveBeenCalledWith(actions.addOneWordAction(payload));
+    });
+
+    it("error", async () => {
+      axiosInstance.post.mockRejectedValue(error);
+      await addOneWord("/", word)(dispatch);
+      expect(dispatch).toHaveBeenCalledWith(actions.errorAction(error));
+    });
+  });
+
+  describe("updateOneWord", () => {
+    axiosInstance.patch = jest.fn();
+    const updateOneWord = createThunkFunction(
+      actions.updateOneWordAction,
+      axiosInstance.patch
+    );
+    const word = { name: "hello", meaning: "world" };
+    const id = 1;
+
+    it("request", async () => {
+      axiosInstance.patch.mockResolvedValue(payload);
+      await updateOneWord(id, word)(dispatch);
+      expect(dispatch).toHaveBeenCalledWith(actions.requestAction());
+    });
+    it("axiosInstance parameter ", async () => {
+      axiosInstance.patch.mockResolvedValue(payload);
+      await updateOneWord(id, word)(dispatch);
+      expect(axiosInstance.patch).toHaveBeenCalledWith(id, word);
+    });
+    it("updateOneWordAction", async () => {
+      axiosInstance.patch.mockResolvedValue(payload);
+      await updateOneWord(id, word)(dispatch);
+      expect(dispatch).toHaveBeenCalledWith(
+        actions.updateOneWordAction(payload)
+      );
+    });
+
+    it("error", async () => {
+      axiosInstance.patch.mockRejectedValue(error);
+      await updateOneWord(id, word)(dispatch);
+      expect(dispatch).toHaveBeenCalledWith(actions.errorAction(error));
+    });
   });
 });
