@@ -73,7 +73,7 @@ const Input = styled.input`
   flex: 1;
   height: 2rem;
   font-size: 1.25rem;
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   padding: 0.25rem 1rem;
   outline: none;
   border: none;

@@ -1,13 +1,24 @@
 import React, { useState } from "react";
-import { Button, ComponentsWrapper } from "../common/CommonComponents";
-import styled from "styled-components";
+import { ComponentsWrapper } from "../common/CommonComponents";
 import Modal from "./modal";
 import WordCardListContainer from "../inputPage/WordCardListContainer";
+import ClearAll from "./clear";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteOneWord } from "../../modules/thunks";
 
 export default function Manage() {
   const [modalVisibility, setModalVisibility] = useState(false);
+  const { words } = useSelector((state) => state.reducer);
+  const dispatch = useDispatch();
   const onConfirm = () => {
+    const destroy = (words) => {
+      for (const { id } of words) {
+        dispatch(deleteOneWord(`/${id}`, { id }));
+      }
+    };
+
     setModalVisibility(false);
+    destroy(words);
   };
   const onCancel = () => {
     setModalVisibility(false);
@@ -20,31 +31,13 @@ export default function Manage() {
   return (
     <ComponentsWrapper>
       <WordCardListContainer />
-      <ClearButtonPositioner>
-        <ClearButton
-          width="100%"
-          height="40px"
-          color="lightPink"
-          onClick={onDeleteAll}
-        >
-          모두삭제
-        </ClearButton>
-      </ClearButtonPositioner>
+      <ClearAll onDeleteAll={onDeleteAll} />
       <Modal
         title="정말로 삭제하시겠습니까?"
         visible={modalVisibility}
         onConfirm={onConfirm}
         onCancel={onCancel}
-      >
-        데이터를 정말로 삭제하시겠습니까?
-      </Modal>
+      />
     </ComponentsWrapper>
   );
 }
-
-const ClearButtonPositioner = styled.div`
-  margin-bottom: 2rem;
-`;
-const ClearButton = styled(Button)`
-  font-size: 1.5rem;
-`;

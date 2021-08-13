@@ -14,7 +14,7 @@ export default function Modal({
     <DarkBackground>
       <ModalBlock>
         <span>{title}</span>
-        <p>{children}</p>
+        <p>데이터를 정말로 삭제하시겠습니까?</p>
         <ButtonGroup>
           <ModalButton
             width="auto"
@@ -50,7 +50,6 @@ const DarkBackground = styled.div`
   top: 0;
   bottom: 0;
   right: 0;
-  max-width: 425px;
   max-height: 882px;
   display: flex;
   justify-content: center;

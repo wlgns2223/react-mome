@@ -49,7 +49,7 @@ export default function WordCard({ word, onDelete, onUpdate }) {
 const Card = styled.div`
   width: 100%;
   padding: 1rem 1rem;
-  border-radius: 1rem;
+  border-radius: 0.25rem;
   position: relative;
   box-sizing: border-box;
   cursor: pointer;
@@ -93,7 +93,7 @@ const Input = styled.input`
   flex: 1;
   height: 1rem;
   font-size: 1rem;
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   padding: 0.25rem 1rem;
   outline: none;
   border: none;
