@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 export default function InputFormContainer() {
   const dispatch = useDispatch();
   const onCreate = (word) => {
-    dispatch(thunks.addOneWord(word));
+    dispatch(thunks.addOneWord("/", word));
   };
 
   return <InputForm onCreate={onCreate} />;

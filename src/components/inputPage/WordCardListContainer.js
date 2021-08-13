@@ -13,14 +13,14 @@ export default function WordCardListContainer() {
 
   const onDelete = useCallback(
     (id) => {
-      dispatch(thunks.deleteOneWord(id));
+      dispatch(thunks.deleteOneWord(`/${id}`, { id }));
     },
     [dispatch]
   );
 
   const onUpdate = useCallback(
     (id, word) => {
-      dispatch(thunks.updateOneWord(id, word));
+      dispatch(thunks.updateOneWord(`/${id}`, word));
     },
     [dispatch]
   );
