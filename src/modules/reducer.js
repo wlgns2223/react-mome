@@ -43,11 +43,11 @@ export default function reducer(state = initialState, action) {
         words: state.words.concat(action.payload.data),
       };
     case actions.UPDATE_ONE_WORD:
-      const id = action.payload.id;
+      const targetId = action.payload.data.id;
       return {
         ...state,
         words: state.words.map((word) =>
-          word.id === id
+          word.id === targetId
             ? {
                 ...action.payload.data,
               }

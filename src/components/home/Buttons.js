@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { ThemeContext } from "styled-components";
+import styled from "styled-components";
 import { useHistory } from "react-router";
 import { Button } from "../common/CommonComponents";
 
@@ -10,6 +10,9 @@ export default function ButtonList() {
   };
   const goManage = () => {
     history.push("/manage");
+  };
+  const goStart = () => {
+    history.push("/start");
   };
 
   return (
@@ -26,7 +29,7 @@ export default function ButtonList() {
           </Button>
         </Item>
         <Item>
-          <Button width="220px" height="70px" color="navy">
+          <Button onClick={goStart} width="220px" height="70px" color="navy">
             <h2>시작</h2>
           </Button>
         </Item>

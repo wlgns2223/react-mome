@@ -19,6 +19,7 @@ export default function ClearAll({ onDeleteAll }) {
 
 const ClearButtonPositioner = styled.div`
   margin-bottom: 2rem;
+  width: 100%;
 `;
 const ClearButton = styled(Button)`
   font-size: 1.5rem;

@@ -15,6 +15,7 @@ export default function Logo() {
 const LogoWrapper = styled.div`
   position: relative;
   margin-top: 3rem;
+  width: 100%;
 `;
 
 const Sqaure = styled.div`

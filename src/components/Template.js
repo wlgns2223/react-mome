@@ -11,6 +11,8 @@ const Wrapper = styled.section`
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: calc(100% - 70px);
   background: ${({ theme }) => theme.pallete.lightIvory};
 `;

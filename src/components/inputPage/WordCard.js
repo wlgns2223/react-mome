@@ -7,9 +7,14 @@ export default function WordCard({ word, onDelete, onUpdate }) {
   const [name, setName] = useState(word.name);
   const [meaning, setMeaning] = useState(word.meaning);
   const [open, setopen] = useState(false);
-  const onClick = useCallback(() => {
-    setopen(!open);
-  }, [open]);
+  const onClick = useCallback(
+    (e) => {
+      if (e.target.tagName !== "INPUT") {
+        setopen(!open);
+      }
+    },
+    [open]
+  );
 
   return (
     <Card onClick={onClick}>

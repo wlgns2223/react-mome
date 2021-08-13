@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { darken } from "polished";
 
 export const Button = styled.button`
@@ -32,6 +32,8 @@ export const Button = styled.button`
 export const ComponentsWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 100%;
 `;
 
@@ -42,4 +44,5 @@ export const AppWrapper = styled.div`
   height: 100vh;
   max-height: 812px;
   margin-top: 3rem;
+  border-radius: 0.25rem;
 `;

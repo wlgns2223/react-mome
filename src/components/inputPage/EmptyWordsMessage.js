@@ -1,19 +1,18 @@
 import React from "react";
 import { useHistory, useLocation } from "react-router";
 import styled from "styled-components";
-import { Button } from "../common/CommonComponents";
 
 export default function EmptyWordsMessage() {
   const history = useHistory();
   const location = useLocation();
-  const manageUrl = "/manage";
+  const inputUrl = "/input";
   const emptyWordsMessage = `🤔 입력된 단어들이 없네요...\n
 👇 아래에서 단어를 추가해보세요.`;
 
-  const manageMessage = "🤔 입력된 단어들이 없네요...";
+  const message = "🤔 입력된 단어들이 없네요...";
   const buttonMessage = ` 🚗 단어입력 하러가기`;
-  const isManagePage = () => {
-    return location.pathname === manageUrl;
+  const isInputPage = () => {
+    return location.pathname === inputUrl;
   };
 
   const onClick = (e) => {
@@ -24,13 +23,13 @@ export default function EmptyWordsMessage() {
   return (
     <Container>
       <EmptyListText>
-        {isManagePage() ? manageMessage : emptyWordsMessage}
+        {isInputPage() ? emptyWordsMessage : message}
       </EmptyListText>
-      {isManagePage() ? (
+      {isInputPage() ? null : (
         <GoToInput width="100%" height="2.5rem" color="navy" onClick={onClick}>
           {buttonMessage}
         </GoToInput>
-      ) : null}
+      )}
     </Container>
   );
 }
@@ -41,6 +40,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 `;
 const GoToInput = styled.a`
   width: 100%;

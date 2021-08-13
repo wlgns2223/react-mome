@@ -1,49 +1,56 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { darken } from "polished";
-import { MdAddCircle } from "react-icons/md";
+import { MdAddCircle, MdArrowBack, MdArrowForward } from "react-icons/md";
+import { Button } from "../common/CommonComponents";
 
-export default function InputForm({ onCreate }) {
-  const [name, setName] = useState("");
+export default function Controller({ goBackward, goForward }) {
   const [meaning, setMeaning] = useState("");
 
-  const onChange = (event, callback) => {
-    callback(event.target.value);
+  const onChange = (e) => {
+    setMeaning(e.target.value);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    onCreate({ name, meaning });
-    setName("");
     setMeaning("");
   };
 
   return (
     <FormPositioner>
-      <Form onSubmit={onSubmit}>
+      <Form>
+        <ItemBlock>
+          <Text>뜻</Text>
+          <Input
+            type="text"
+            placeholder="뜻을 입력하세요"
+            value={meaning}
+            onChange={onChange}
+          />
+          <CircleButton type="button" onClick={onSubmit}>
+            <MdAddCircle />
+          </CircleButton>
+        </ItemBlock>
         <InputBlock>
-          <ItemBlock>
-            <Text>단어</Text>
-            <Input
-              type="text"
-              placeholder="단어를 입력하세요"
-              value={name}
-              onChange={(e) => onChange(e, setName)}
-            />
-          </ItemBlock>
-          <ItemBlock>
-            <Text>뜻</Text>
-            <Input
-              type="text"
-              placeholder="뜻을 입력하세요"
-              value={meaning}
-              onChange={(e) => onChange(e, setMeaning)}
-            />
-          </ItemBlock>
+          <Button
+            width="50%"
+            height="2.5rem"
+            color="lightPink"
+            type="button"
+            onClick={goBackward}
+          >
+            <MdArrowBack />
+          </Button>
+          <Button
+            width="50%"
+            height="2.5rem"
+            color="lightPink"
+            type="button"
+            onClick={goForward}
+          >
+            <MdArrowForward />
+          </Button>
         </InputBlock>
-        <CircleButton type="submit">
-          <MdAddCircle />
-        </CircleButton>
       </Form>
     </FormPositioner>
   );
@@ -62,7 +69,7 @@ const Form = styled.form`
   position: relative;
 `;
 const InputBlock = styled.div`
-  padding-bottom: 3rem;
+  display: flex;
 `;
 const ItemBlock = styled.div`
   margin-bottom: 1rem;
@@ -89,7 +96,7 @@ const Text = styled.span`
   text-align: center;
 `;
 const CircleButton = styled.button`
-  width: 7rem;
+  width: 3.5rem;
   height: 2.5rem;
   border-radius: 0.25rem;
   font-size: 2rem;
@@ -98,11 +105,8 @@ const CircleButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  left: 50%;
-  bottom: 1rem;
-  transform: translate(-50%, 0);
   cursor: pointer;
+  margin-left: 1rem;
 
   color: ${({ theme }) => theme.pallete.lightIvory};
   background-color: ${({ theme }) => theme.pallete.lightPink};

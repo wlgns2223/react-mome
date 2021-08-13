@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { ComponentsWrapper } from "../common/CommonComponents";
 import Modal from "./modal";
 import WordCardListContainer from "../inputPage/WordCardListContainer";
 import ClearAll from "./clear";
@@ -29,7 +28,7 @@ export default function Manage() {
   };
 
   return (
-    <ComponentsWrapper>
+    <>
       <WordCardListContainer />
       <ClearAll onDeleteAll={onDeleteAll} />
       <Modal
@@ -38,6 +37,6 @@ export default function Manage() {
         onConfirm={onConfirm}
         onCancel={onCancel}
       />
-    </ComponentsWrapper>
+    </>
   );
 }
