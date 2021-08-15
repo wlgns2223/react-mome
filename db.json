@@ -1,3 +1,19 @@
 {
-  "words": []
+  "words": [
+    {
+      "name": "Apple",
+      "meaning": "사과",
+      "id": 1
+    },
+    {
+      "name": "Banana",
+      "meaning": "바나나",
+      "id": 2
+    },
+    {
+      "name": "Peach",
+      "meaning": "복숭아",
+      "id": 3
+    }
+  ]
 }

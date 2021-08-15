@@ -13,6 +13,7 @@ const Wrapper = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
   height: calc(100% - 70px);
   background: ${({ theme }) => theme.pallete.lightIvory};
 `;
