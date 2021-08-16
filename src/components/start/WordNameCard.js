@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled, { css, keyframes } from "styled-components";
+import styled, { css } from "styled-components";
 import Result from "./Result";
 import { darken } from "polished";
 
@@ -16,11 +16,12 @@ export default function WordNameCard({ word, onAppendInput, onSetIndex }) {
     const next = () => {
       setTimeout(() => {
         setDone(false);
-        onSetIndex();
       }, 1000);
     };
     setAnswer("");
-    onAppendInput({ answer, corret: isCorrect(word, answer) });
+    onAppendInput({ answer, correct: isCorrect(word, answer) });
+    onSetIndex();
+
     setDone(true);
     setCorrect(isCorrect(word, answer));
     next();

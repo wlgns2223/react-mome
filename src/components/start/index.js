@@ -3,6 +3,7 @@ import StartContainer from "./StartContainer";
 import EmptyWordsMessage from "../inputPage/EmptyWordsMessage";
 import { useDispatch, useSelector } from "react-redux";
 import * as thunks from "../../modules/thunks";
+
 export default function Start() {
   const dispatch = useDispatch();
   useEffect(() => {

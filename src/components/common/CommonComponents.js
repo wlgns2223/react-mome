@@ -29,14 +29,6 @@ export const Button = styled.button`
   }
 `;
 
-export const ComponentsWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-`;
-
 export const AppWrapper = styled.div`
   margin: 0 auto;
   min-width: 320px;
