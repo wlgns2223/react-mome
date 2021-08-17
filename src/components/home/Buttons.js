@@ -30,7 +30,7 @@ export default function ButtonList() {
         </Item>
         <Item>
           <Button onClick={goStart} width="220px" height="70px" color="navy">
-            <h2>시작</h2>
+            <h2>테스트</h2>
           </Button>
         </Item>
       </ItemList>

@@ -53,6 +53,7 @@ const GoToInput = styled.a`
   background-color: ${({ theme }) => theme.pallete.navy};
   font-size: 1.125rem;
   letter-spacing: 0.2rem;
+  cursor: pointer;
 `;
 const EmptyListText = styled.pre`
   font-size: 1.5rem;

@@ -46,6 +46,7 @@ const GoHome = styled(Button)`
   background-color: ${({ theme }) => theme.pallete.lightPink};
   outline: none;
   border: none;
+  cursor: pointer;
   &:hover {
     ${({ theme }) => {
       const color = theme.pallete.lightPink;
