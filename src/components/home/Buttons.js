@@ -45,11 +45,11 @@ const Section = styled.article`
   flex: 1;
 `;
 const ItemList = styled.ul`
-  margin: 60px auto;
+  margin: 30px auto;
 `;
 
 const Item = styled.li`
   & + & {
-    margin-top: 40px;
+    margin-top: 10vh;
   }
 `;

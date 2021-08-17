@@ -50,7 +50,6 @@ export default function InputForm({ onCreate }) {
 }
 
 const FormPositioner = styled.div`
-  margin-bottom: 2rem;
   width: 100%;
 `;
 
