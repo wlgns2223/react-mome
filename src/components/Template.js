@@ -14,6 +14,7 @@ const Wrapper = styled.section`
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  height: calc(100% - 70px);
   background: ${({ theme }) => theme.pallete.lightIvory};
+  flex: 1;
+  border-top: ${({ theme }) => theme.pallete.lightIvory};
 `;

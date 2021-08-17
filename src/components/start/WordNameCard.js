@@ -55,7 +55,7 @@ export default function WordNameCard({ word, onAppendInput, onSetIndex }) {
 
 const Container = styled.div`
   position: absolute;
-  top: 9rem;
+  top: 4rem;
   margin: 0 1rem;
 `;
 

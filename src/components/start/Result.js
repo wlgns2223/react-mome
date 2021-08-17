@@ -19,7 +19,7 @@ to {
 
 const IconContainer = styled.div`
   position: absolute;
-  bottom: 9rem;
+  bottom: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;

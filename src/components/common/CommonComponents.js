@@ -36,4 +36,6 @@ export const AppWrapper = styled.div`
   height: 100vh;
   max-height: 812px;
   border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
 `;
