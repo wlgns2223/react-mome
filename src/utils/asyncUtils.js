@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiUrl = "http://localhost:3001/words/";
+const apiUrl = "https://react-mome.herokuapp.com/words/";
 const axiosInstance = axios.create({
   baseURL: apiUrl,
 });
