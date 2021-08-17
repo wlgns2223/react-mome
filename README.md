@@ -14,7 +14,17 @@
 
 ### 프론트엔드: React.js, Redux, Redux-Thunk, styled-components,axios
 
+<br>
+
 ### 유닛 테스트: jest
+
+<br>
+
+### UI : Figma
+
+<br>
+
+### 계획: github projects
 
 <br>
 
@@ -26,6 +36,8 @@ json-server를 이용해 백엔드 서버가 있다고 가정했고
 db.json파일에 단어들을 따로 저장하고 있으며
 **redux-thunk** 와 **axios** 를 이용하여 비동기적으로 데이터를 가져옵니다.
 테스트 결과는 **Giphy API** 를 이용하여 비동기적으로 가져옵니다.
+<br>
+<br>
 
 <br>
 <br>
