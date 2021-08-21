@@ -20,6 +20,7 @@
 .env
 
 #key
+/src/keyconfig.json
 
 npm-debug.log*
 yarn-debug.log*
