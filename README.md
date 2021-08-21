@@ -2,7 +2,7 @@
 
 ## 개요
 
-[배포 사이트 확인](https://react-mome.herokuapp.com/)
+[배포 사이트 확인(Check the deployed Web)](https://react-mome.herokuapp.com/)
 
 영어단어 및 여러 개념들을 기록 하고 외울 수 있게 도와주는 웹앱입니다.  
 단어 추가,수정,삭제,모두삭제가 가능하고 얼마나 외웠는지 확인 할 수 있는
