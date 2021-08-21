@@ -10,15 +10,22 @@
 테스트 결과의 등급은 'Good','So So','Bad'로 나뉘며
 각 등급마다 5개의 밈들이 무작위로 하나씩 나타납니다.
 <br>
+
+React.Js flashcard WebApp
+You can add, edit, remove , remove all and test yourself.
+You will see a meme according to your test score.
+There are 3 categories of memes. "Good", "So So", "Bad"
+You will see one of them randomly according the your test score
+<br>
 <br>
 
-## 개발 스택
+## 개발 스택 (Technical Stack)
 
-### 프론트엔드: React.js, Redux, Redux-Thunk, styled-components,axios
+### 프론트엔드(Frontend): React.js, Redux, Redux-Thunk, styled-components,axios
 
 <br>
 
-### 유닛 테스트: jest
+### 유닛 테스트(Unit Test): jest
 
 <br>
 
@@ -26,7 +33,7 @@
 
 <br>
 
-### 계획: github projects
+### 계획(Development Plans): github projects
 
 <br>
 
@@ -41,32 +48,36 @@ db.json파일에 단어들을 따로 저장하고 있으며
 <br>
 <br>
 
+I used **TDD** and have done tests and refactoring on **redux**,**redux thunk** functions.
+
+I use JSON-Server as a mocking backend and store user inputs on db.json.
+and Redux-thunk and Axios is used for asynchronous requests.
 <br>
 <br>
 
-## 기능
+## 기능 (Features)
 
-### 단어 추가
+### 단어 추가 (Add a word)
 
 ![add](https://user-images.githubusercontent.com/40737888/129669277-c4e86c89-8eb8-43f5-9305-19aa80fff0e2.gif)
 <br>
 
-### 단어 수정
+### 단어 수정 (Edit a word)
 
 ![edit](https://user-images.githubusercontent.com/40737888/129669706-5d361621-8f29-4cf9-b684-4ae6b689e682.gif)
 <br>
 
-### 단어 삭제
+### 단어 삭제 (Delete a word)
 
 ![delete](https://user-images.githubusercontent.com/40737888/129670375-74f1bf40-f855-4b57-bf18-14382691cc88.gif)
 <br>
 
-### 단어 관리
+### 단어 관리 (Manage your words)
 
 ![manage](https://user-images.githubusercontent.com/40737888/129671486-44c1bf27-85b2-47a9-a705-38b902fb519e.gif)
 <br>
 
-### 테스트 시작
+### 테스트 시작 (Test yourself)
 
 #### GOOD
 
